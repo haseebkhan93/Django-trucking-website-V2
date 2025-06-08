@@ -34,16 +34,16 @@ if not SECRET_KEY:
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 
 # Updated ALLOWED_HOSTS for Railway deployment
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'django-trucking-website-v2-production-744f.up.railway.app',
+    '127.0.0.1',
+    'localhost',
+    '.railway.app',  # This allows any railway.app subdomain
+]
+
+# If ALLOWED_HOSTS environment variable is set, use it instead
 if os.environ.get('ALLOWED_HOSTS'):
-    ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
-else:
-    ALLOWED_HOSTS = [
-        'django-trucking-website-v2-production-744f.up.railway.app',
-        '127.0.0.1',
-        'localhost',
-        '.railway.app',  # This allows any railway.app subdomain
-    ]
+    ALLOWED_HOSTS = [host.strip() for host in os.environ.get('ALLOWED_HOSTS').split(',')]
 
 # CSRF Settings for Railway
 CSRF_TRUSTED_ORIGINS = [
