@@ -1,0 +1,216 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="description" content="ProTrans Logistics offers fast and secure trucking services across the nation. Get a quote today." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+  <title>ProTrans Logistics - Trucking Company</title>
+  <link rel="stylesheet" href="{% static 'css/index.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"  referrerpolicy="no-referrer" />
+
+</head>
+<body>
+  
+
+  <!-- Header -->
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-logo">
+      <!-- Truck Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+           stroke-width="1.5" stroke="#00d0ff" width="35" height="35" style="margin-right: 8px;">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+      </svg>
+      <span>FreightPro</span>
+    </div>
+
+    <ul class="navbar-menu" id="navbarMenu">
+      <li><a href="{% url 'index' %}" class="active">Home</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'quote' %}">Request Quote</a></li>
+    </ul>
+
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+
+
+<!-- floating chat button -->
+  <button class="chat-toggle-button" onclick="toggleChat()">
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-message-circle">
+    <path d="M21 11.5a8.38 8.38 0 0 1-1.9 5.4 8.5 8.5 0 0 1-6.6 3.1 8.38 8.38 0 0 1-5.4-1.9L3 21l1.9-4.1a8.38 8.38 0 0 1-1.9-5.4 8.5 8.5 0 0 1 3.1-6.6A8.38 8.38 0 0 1 11.5 3 8.5 8.5 0 0 1 21 11.5z"></path>
+  </svg>
+  </button>
+
+  <!-- Chat window -->
+  <div id="chatbot" class="chatbot-window">
+    <div class="chatbot-header">
+      <h4>Ask Us!</h4>
+      <button onclick="toggleChat()">✖</button>
+    </div>
+
+    <div class="chatbot-options">
+      <button onclick="showCalculator()">📦 Price Calculator</button>
+      <button onclick="showFAQ()">❓ FAQs</button>
+    </div>
+
+    <div id="chat-content" class="chat-content"></div>
+  </div>
+
+
+
+<!-- Welcome Section -->
+<div class="welcome-section">
+    <h1><strong>Professional <span class="highlight">Freight</span> Solutions</strong></h1>
+    <p>Reliable trucking services across America. We move your cargo safely, efficiently, and on time, every time.</p>
+    <div class="welcome-buttons">
+        <a href="{% url 'quote' %}" class="btn-primary">Get Free Quote</a>
+        <a href="{% url 'about' %}" class="btn-secondary">Learn More</a>
+    </div>
+</div>
+
+
+<!-- Container wrapping main content -->
+<div class="container">    
+   <!-- Services Section -->
+    <!-- Services Section -->
+  <section class="services-section">
+    <hr>
+    <h3 class="services-title">Our Services</h3>
+    <hr>
+    <br>
+  
+    <div class="services-grid">
+      <!-- Service 1 -->
+      <div class="service-item">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+          </svg>
+        </div>
+        <div class="service-description">
+          <p>We operate a modern fleet of trucks equipped for all kinds of deliveries.</p>
+        </div>
+      </div>
+  
+      <!-- Service 2 -->
+      <div class="service-item">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5M3.75 18h8.25" />
+          </svg>
+        </div>
+        <div class="service-description">
+          <p>Our logistics team ensures on-time delivery and complete tracking support.</p>
+        </div>
+      </div>
+  
+      <!-- Service 3 -->
+      <div class="service-item">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1.5m0 15V21m9-9h-1.5M4.5 12H3m15.364-6.364l-1.06 1.06M6.696 17.303l-1.06 1.061m0-12.728l1.06 1.06M17.304 17.304l1.06 1.06M12 7.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5Z" />
+          </svg>
+        </div>
+        <div class="service-description">
+          <p>Nationwide shipping coverage with flexible and secure transport options.</p>
+        </div>
+      </div>
+  
+      <!-- Service 4 -->
+      <div class="service-item">
+        <div class="service-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.75 6.75L12 12l8.25-5.25m-16.5 0L12 3l8.25 3.75m-16.5 0v10.5l8.25 4.5 8.25-4.5V6.75" />
+          </svg>
+        </div>
+        <div class="service-description">
+          <p>Customized freight solutions tailored to your business needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+</div> <!-- end container -->
+
+
+  <section class="stats-section">
+  <div class="stats-container">
+    <div class="stat-box">
+      <h2>10+</h2>
+      <p>Years Experience</p>
+    </div>
+    <div class="stat-box">
+      <h2>500+</h2>
+      <p>Fleet Vehicles</p>
+    </div>
+    <div class="stat-box">
+      <h2>99.9%</h2>
+      <p>On-Time Delivery</p>
+    </div>
+    <div class="stat-box">
+      <h2>24/7</h2>
+      <p>Customer Support</p>
+    </div>
+  </div>
+</section>
+
+
+ 
+  <!-- Drivers Section -->
+<section class="drivers-section">
+  <h3 class="drivers-title">Meet Our Drivers</h3>
+
+  <div class="driver-item">
+    <div class="driver-photo">
+      <img src="{% static 'images/driver1.jpg' %}" alt="John Doe" />
+    </div>
+    <div class="driver-info">
+      <h4>Anonymous</h4>
+      <p>With over 15 years of experience, John ensures timely deliveries with a focus on safety and customer satisfaction.</p>
+    </div>
+  </div>
+
+  <div class="driver-item">
+    <div class="driver-photo">
+      <img src="{% static 'images/driver2.jpg' %}" alt="Sarah Lee" />
+    </div>
+    <div class="driver-info">
+      <h4>Anonymous</h4>
+      <p>Sarah is known for her excellent navigation skills and professionalism, handling complex routes with ease.</p>
+    </div>
+  </div>
+
+  <div class="driver-item">
+    <div class="driver-photo">
+      <img src="{% static 'images/driver3.jpg' %}" alt="Mike Johnson" />
+    </div>
+    <div class="driver-info">
+      <h4>Anonymous</h4>
+      <p>Mike’s commitment to punctuality and vehicle care makes him a trusted member of our driving team.</p>
+    </div>
+  </div>
+
+  <div class="connect-button-container">
+    <a href="{% url 'quote' %}" class="connect-button">Connect With Us</a>
+  </div>
+</section>
+
+{% include 'footer.html' %}
+
+  <script src="{% static 'js/index.js' %}" defer></script>
+</body>
+</html>

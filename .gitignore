@@ -1,0 +1,41 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Env files
+.env
+
+# SQLite database file
+db.sqlite3
+
+# Django migrations (optional, but recommended to track them)
+# You can choose to include migrations or ignore them
+# To ignore:
+*/migrations/*.py
+*/migrations/*.pyc
+# But usually, it's better to commit migrations for consistency.
+
+# IDE/editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+
+# macOS files
+.DS_Store
+
+# Others
+*.sqlite3
+*.bak
+*.swp
+
+

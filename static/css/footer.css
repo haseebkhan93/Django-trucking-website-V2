@@ -1,0 +1,156 @@
+/* FOOTER STYLES */
+.modern-footer {
+  background-color: #0b0c0f;
+  color: #ffffff;
+  padding: 40px 20px;
+  font-family: 'Segoe UI', sans-serif;
+  border-top: 1px solid #1a1a1a;
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 60px;
+  max-width: 1200px;
+  margin: 25px auto;
+}
+
+/* Brand Section */
+.footer-brand h2 {
+  font-size: 25px;
+  color: #00bfff;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #cccccc;
+  margin-bottom: 15px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 30px;
+}
+
+.footer-socials a {
+  color: #ffffff;
+  font-size: 16px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-socials a:hover {
+  color: #00bfff;
+}
+
+/* Quick Links & Services */
+.footer-links h3,
+.footer-services h3,
+.footer-contact h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.footer-links ul,
+.footer-services ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom:50px;
+  margin-top: 20px;
+  
+}
+.footer-links{
+  margin-left: 30px;
+}
+
+.footer-links li,
+.footer-services li {
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.footer-links a {
+  color: #cccccc;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #00bfff;
+}
+
+/* Contact Section */
+.footer-contact p {
+  font-size: 15px;
+  color: #cccccc;
+  margin-bottom: 10px;
+}
+
+/* Branding */
+.brand-icon {
+  font-size: 24px;
+}
+
+.brand-name {
+  font-weight: bold;
+  color: #00bfff;
+}
+
+/* Footer Divider */
+.footer-divider {
+  padding-top: 15px;
+  width: 100%;
+  border: none;
+  border-top: 1px solid #444;
+  margin: 60px 0 15px;
+}
+
+/* Footer Bottom Copyright */
+.footer-bottom {
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+  padding-bottom: 0;
+  margin: 0 auto;
+}
+
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr; /* Stack vertically on small screens */
+    padding: 0 10px;
+    text-align: left;
+  }
+
+  .footer-brand h2 {
+    font-size: 20px;
+  }
+  .footer-links{
+    margin-left: 0;
+  }
+
+  .footer-links h3,
+  .footer-services h3,
+  .footer-contact h3 {
+    font-size: 18px;
+  }
+
+  .footer-links li,
+  .footer-services li,
+  .footer-contact p {
+    font-size: 14px;
+  }
+
+  .footer-bottom {
+    font-size: 13px;
+    padding-bottom: 15px;
+  }
+}

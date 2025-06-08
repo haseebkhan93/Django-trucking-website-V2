@@ -1,0 +1,256 @@
+/* General Reset & Body */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #121212;
+  color: #eee;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Container */
+.container {
+  max-width: 1100px;
+  margin: 40px auto 60px;
+  padding: 0 20px;
+}
+
+/* Header */
+.header {
+  background-color: #1f1f1f;
+  padding: 25px 0;
+  text-align: center;
+  border-bottom: 2px solid #ffc107;
+  box-shadow: 0 2px 10px rgba(255, 193, 7, 0.2);
+}
+
+.company-name {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffc107;
+  letter-spacing: 2px;
+}
+
+.navbar {
+  margin-top: 10px;
+}
+
+.navbar a {
+  margin: 0 15px;
+  color: #ccc;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #ffc107;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 2.2rem;
+  color: #ffc107;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 1.5px;
+  user-select: none;
+}
+
+/* Paragraphs */
+.about-text {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  font-size: 1.15rem;
+  color: #ccc;
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* Lists */
+.about-list {
+  max-width: 900px;
+  margin: 0 auto 50px;
+  padding-left: 20px;
+  list-style: none;
+  color: #ddd;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.about-list li {
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 14px;
+}
+
+.about-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #ffc107;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 1;
+  user-select: none;
+}
+
+/* Map Container */
+svg path {
+  fill: #ffc107;
+  stroke: #000000;
+  stroke-width: 1.5;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-play-state: paused; /* <- Add this */
+}
+
+
+svg path:nth-child(1)  { animation-delay: 0.6s; }
+svg path:nth-child(2)  { animation-delay: 0.8s; }
+svg path:nth-child(3)  { animation-delay: 1.0s; }
+svg path:nth-child(4)  { animation-delay: 1.2s; }
+svg path:nth-child(5)  { animation-delay: 1.4s; }
+svg path:nth-child(6)  { animation-delay: 1.6s; }
+svg path:nth-child(7)  { animation-delay: 1.8s; }
+svg path:nth-child(8)  { animation-delay: 2.0s; }
+svg path:nth-child(9)  { animation-delay: 2.2s; }
+svg path:nth-child(10) { animation-delay: 2.4s; }
+svg path:nth-child(11) { animation-delay: 2.6s; }
+svg path:nth-child(12) { animation-delay: 2.8s; }
+svg path:nth-child(13) { animation-delay: 3.0s; }
+svg path:nth-child(14) { animation-delay: 3.2s; }
+svg path:nth-child(15) { animation-delay: 3.4s; }
+svg path:nth-child(16) { animation-delay: 3.6s; }
+svg path:nth-child(17) { animation-delay: 3.8s; }
+svg path:nth-child(18) { animation-delay: 4.0s; }
+svg path:nth-child(19) { animation-delay: 4.2s; }
+svg path:nth-child(20) { animation-delay: 4.4s; }
+svg path:nth-child(21) { animation-delay: 4.6s; }
+svg path:nth-child(22) { animation-delay: 4.8s; }
+svg path:nth-child(23) { animation-delay: 5.0s; }
+svg path:nth-child(24) { animation-delay: 5.2s; }
+
+
+
+.social-links {
+  background-color: #0a0a0a;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  color: #facc15;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.social-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0%;
+  background-color: #facc15;
+  transition: width 0.3s ease;
+}
+
+.social-links a:hover::after {
+  width: 100%;
+}
+
+
+
+/* Footer */
+.footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    margin: 20px auto 40px;
+    padding: 0 15px;
+  }
+
+  .company-name {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .about-text,
+  .about-list {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .navbar a {
+    margin: 0 12px;
+    font-size: 1rem;
+  }
+   .social-links {
+    flex-direction: column;    /* stack icons vertically */
+    gap: 1rem;                 /* reduce space between links */
+    align-items: center;       /* center align stacked items */
+  }
+
+  .social-links a {
+    font-size: 1.1rem;         /* slightly larger on small screens if needed */
+  }
+}
+  
+
+.map-container {
+  margin-top: 40px;
+}
+
+.map-svg {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+  background-color: #222;
+}
+.svg-map {
+  width: 100%;
+  max-width: 1000px; /* or whatever size you want */
+  height: auto;
+  display: inline-block;
+}
+
+
+
+
+
+
+

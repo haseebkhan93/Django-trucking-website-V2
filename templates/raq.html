@@ -1,0 +1,140 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="description" content="Request a freight quote from ProTrans Logistics. Reliable delivery solutions tailored to your needs." />
+  <title>Request a Quote - ProTrans Logistics</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+  <link rel="stylesheet" href="{% static 'css/raq.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"  referrerpolicy="no-referrer" />
+
+</head>
+<body>
+
+  
+ <!-- Header -->
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-logo">
+      <!-- Truck Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+           stroke-width="1.5" stroke="#00d0ff" width="35" height="35" style="margin-right: 8px;">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+      </svg>
+      <span>FreightPro</span>
+    </div>
+
+    <ul class="navbar-menu" id="navbarMenu">
+      <li><a href="{% url 'index' %}">Home</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'quote' %}" class="active">Request Quote</a></li>
+    </ul>
+
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</nav>
+
+
+<section class="quote-section">
+  <h2 class="quote-title">
+    <span class="text-white">Request a</span> <span class="highlight">Quote</span>
+  </h2>
+  <p class="quote-subtitle">
+    Get a competitive quote for your freight shipping needs. Fill out the form below and we'll respond within 2 hours.
+  </p>
+</section>
+
+
+
+<div class="form-wrapper"> 
+  <div class="container">
+    <section>
+      <h2>Choose an Option</h2>
+      <button id="bookTruckBtn">Book a Truck</button>
+      <button id="contactUsBtn">Contact Us</button>
+    </section>
+
+
+    <!-- Book a Truck Form -->
+    <form id="bookTruckForm" action="{% url 'quote' %}" method="POST">
+  {% csrf_token %}
+  <h2>Request a Freight Quote</h2>
+
+  <div class="form-grid">
+    <div>
+      <label for="id_broker_name">Broker Name *</label>
+      {{ form.broker_name }}
+    </div>
+
+    <div>
+      <label for="id_email">Email *</label>
+      {{ form.email }}
+    </div>
+
+    <div>
+      <label for="id_pickup">Pickup Location *</label>
+      {{ form.pickup }}
+    </div>
+
+    <div>
+      <label for="id_dropoff">Dropoff Location *</label>
+      {{ form.dropoff }}
+    </div>
+
+    <div>
+      <label for="id_equipment">Equipment Type *</label>
+      {{ form.equipment }}
+    </div>
+
+    <div>
+      <label for="id_weight">Weight (lbs) *</label>
+      {{ form.weight }}
+    </div>
+
+    <div>
+      <label for="id_pickup_date">Pickup Date *</label>
+      {{ form.pickup_date }}
+    </div>
+
+    <div class="full-width">
+      <label for="id_notes">Additional Notes</label>
+      {{ form.notes }}
+    </div>
+  </div>
+
+  <button type="submit">Submit Quote Request</button>
+
+  <p class="chat-disclaimer">You can also calculate the approx price for your load in home section using the chatbot</p>
+</form>
+
+
+    <!-- Contact Us Form -->
+    <form id="contactUsForm" action="{% url 'quote' %}" method="POST">
+      {% csrf_token %}
+      <h2>Contact Us</h2>
+
+      <label for="contact_email">Your Email *</label>
+      <input type="email" id="contact_email" name="contact_email" placeholder="Enter email address" required>
+
+      <label for="message">Your Message / Query *</label>
+      <textarea id="message" name="message" rows="5" placeholder="Any special requirements,handling instructions, or additional details.." required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</div>
+  {% include 'footer.html' %}
+
+  <script src="{% static 'js/index.js' %}" defer></script>
+</body>
+</html>

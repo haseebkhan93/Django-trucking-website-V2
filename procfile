@@ -1,0 +1,1 @@
+web: truckingwebsite.wsgi.application
