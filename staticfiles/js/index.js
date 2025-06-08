@@ -1,3 +1,9 @@
+function toggleMenu() {
+  const menu = document.getElementById("navbarMenu");
+  menu.classList.toggle("active");
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
   // ========== NAVBAR ========== //
   const hamburger = document.getElementById('hamburger');
@@ -10,72 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ========== SLIDER ========== //
-  const slides = document.querySelectorAll('.slider-img');
-  let currentIndex = 0;
-  let slideInterval;
-  const intervalTime = 8000;
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle('active', i === index);
-    });
-  }
-
-  function nextSlide() {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
-  }
-
-  function prevSlide() {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    showSlide(currentIndex);
-  }
-
-  function startSlider() {
-    slideInterval = setInterval(nextSlide, intervalTime);
-  }
-
-  function stopSlider() {
-    clearInterval(slideInterval);
-  }
-
-  if (slides.length > 0) {
-    showSlide(currentIndex);
-    startSlider();
-
-    slides.forEach(slide => {
-      slide.addEventListener('mouseenter', stopSlider);
-      slide.addEventListener('mouseleave', startSlider);
-    });
-
-    const sliderContainer = document.querySelector('.slider-container');
-    if (sliderContainer) {
-      const prevBtn = document.createElement('button');
-      const nextBtn = document.createElement('button');
-
-      prevBtn.textContent = '‹';
-      nextBtn.textContent = '›';
-
-      prevBtn.className = 'slider-nav slider-prev';
-      nextBtn.className = 'slider-nav slider-next';
-
-      sliderContainer.appendChild(prevBtn);
-      sliderContainer.appendChild(nextBtn);
-
-      prevBtn.addEventListener('click', () => {
-        prevSlide();
-        stopSlider();
-        startSlider();
-      });
-
-      nextBtn.addEventListener('click', () => {
-        nextSlide();
-        stopSlider();
-        startSlider();
-      });
-    }
-  }
 
   // ========== FORM TOGGLING ========== //
   const bookBtn = document.getElementById('bookTruckBtn');
@@ -103,3 +43,137 @@ document.addEventListener('DOMContentLoaded', () => {
     bookForm.style.display = 'block';
   }
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.innerWidth <= 768) {
+    const serviceItems = document.querySelectorAll(".service-item");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Remove hover-effect from all other items
+            serviceItems.forEach(item => item.classList.remove("hover-effect"));
+            // Add hover-effect to the currently visible one
+            entry.target.classList.add("hover-effect");
+          }
+        });
+      },
+      {
+        threshold: 1.0, // Adjust this if you want more or less of the item to be visible before triggering
+      }
+    );
+
+    serviceItems.forEach((item) => observer.observe(item));
+  }
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.innerWidth <= 768) {
+    const driverItems = document.querySelectorAll(".driver-item");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Remove hover-effect from all other driver-items
+            driverItems.forEach(item => item.classList.remove("hover-effect"));
+            // Add hover-effect to the currently visible one
+            entry.target.classList.add("hover-effect");
+          }
+        });
+      },
+      {
+        threshold: 1.0, // Adjust sensitivity as needed
+      }
+    );
+
+    driverItems.forEach((item) => observer.observe(item));
+  }
+});
+
+
+
+
+
+function toggleChat() {
+  const chatbot = document.getElementById("chatbot");
+  chatbot.style.display = chatbot.style.display === "flex" ? "none" : "flex";
+}
+
+// Show price calculator option
+function showCalculator() {
+  const content = document.getElementById("chat-content");
+  content.innerHTML = `
+    <h5>📦 Load Price Calculator</h5>
+    <input type="number" id="distance" placeholder="Distance (miles)">
+    <input type="number" id="weight" placeholder="Weight (lbs)">
+    <button onclick="calculatePrice()">Calculate</button>
+    <div id="price-result" style="margin-top:10px;"></div>
+  `;
+}
+
+
+// Show FAQ option
+function showFAQ() {
+  const content = document.getElementById("chat-content");
+  content.innerHTML = `
+    <h5>❓ Frequently Asked Questions</h5>
+    <ul>
+      <li><strong>Q:</strong> How long does delivery take?<br><em>A:</em> It usually takes 2-5 days depending on distance.</li>
+      <li><strong>Q:</strong> Can I track my load?<br><em>A:</em> Yes, via your account dashboard.</li>
+      <li><strong>Q:</strong> How do I contact support?<br><em>A:</em> Email us at support@example.com</li>
+    </ul>
+  `;
+}
+
+
+function toggleChat() {
+  const chatbot = document.getElementById("chatbot");
+  chatbot.style.display = chatbot.style.display === "flex" ? "none" : "flex";
+}
+
+// Load Price Calculator form
+function showCalculator() {
+  const content = document.getElementById("chat-content");
+  content.innerHTML = `
+    <h5>📦 Load Price Calculator</h5>
+    <input type="number" id="distance" placeholder="Distance (miles)">
+    <input type="number" id="weight" placeholder="Weight (lbs)">
+    <button onclick="calculatePrice()">Calculate</button>
+    <div id="price-result" style="margin-top:10px;"></div>
+  `;
+}
+
+// Load FAQs
+function showFAQ() {
+  const content = document.getElementById("chat-content");
+  content.innerHTML = `
+    <h5>❓ FAQs</h5>
+    <ul>
+      <li><strong>Q:</strong> How long does delivery take?<br><em>A:</em> 1-3 days based on location.</li>
+      <li><strong>Q:</strong> Can I track my shipment?<br><em>A:</em> Yes — via SMS & email notifications.</li>
+      <li><strong>Q:</strong> How is pricing calculated?<br><em>A:</em> Based on distance and load weight.</li>
+    </ul>
+  `;
+}
+
+
+function calculatePrice() {
+  const distance = document.getElementById("distance").value;
+  const weight = document.getElementById("weight").value;
+  const pricePerMile = 5;
+  const pricePerLb = 2;
+
+  const resultDiv = document.getElementById("price-result");
+
+  if (distance && weight) {
+    const total = (distance * pricePerMile) + (weight * pricePerLb);
+    resultDiv.innerHTML = `<strong>Total Price:</strong> $${total.toFixed(2)} (for ${distance} miles, ${weight} lbs)`;
+  } else {
+    resultDiv.innerHTML = `<span style="color:#f87171;">Please enter both values.</span>`;
+  }
+}
+
