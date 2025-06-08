@@ -19,7 +19,10 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 # Environment-specific ALLOWED_HOSTS
 if RAILWAY_ENV:
+    # Get the actual Railway domain from environment
+    railway_domain = os.environ.get('RAILWAY_PUBLIC_DOMAIN', 'django-trucking-website-production.up.railway.app')
     ALLOWED_HOSTS = [
+        railway_domain,
         'django-trucking-website-production.up.railway.app',
         'django-trucking-website-production.railway.app', 
         '.railway.app',
@@ -40,10 +43,30 @@ else:
 
 # Environment-specific CSRF settings
 if RAILWAY_ENV:
-    CSRF_TRUSTED_ORIGINS = ['https://django-trucking-website-production.up.railway.app']
+    # Get the actual Railway domain from environment
+    railway_domain = os.environ.get('RAILWAY_PUBLIC_DOMAIN', 'django-trucking-website-production.up.railway.app')
+    
+    CSRF_TRUSTED_ORIGINS = [
+        f'https://{railway_domain}',
+        'https://django-trucking-website-production.up.railway.app',
+        'https://django-trucking-website-production.railway.app',
+        'https://*.railway.app'
+    ]
+    
+    # Additional CSRF settings for Railway
     CSRF_COOKIE_SECURE = True
+    CSRF_COOKIE_HTTPONLY = True
+    CSRF_COOKIE_SAMESITE = 'Lax'  # Important for Railway
+    CSRF_USE_SESSIONS = False  # Use cookies instead of sessions
+    
     SESSION_COOKIE_SECURE = True
-    # Don't force SSL redirect on Railway - they handle SSL termination
+    SESSION_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SAMESITE = 'Lax'
+    
+    # Security headers
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = False  # Railway handles SSL termination
+    
 else:
     CSRF_TRUSTED_ORIGINS = ['http://localhost:8000', 'http://127.0.0.1:8000']
     CSRF_COOKIE_SECURE = False
