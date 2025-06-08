@@ -111,8 +111,8 @@ if os.environ.get('SUPABASE_USER') and os.environ.get('SUPABASE_PASSWORD'):
             'NAME': 'postgres',
             'USER': os.environ.get('SUPABASE_USER'),
             'PASSWORD': os.environ.get('SUPABASE_PASSWORD'),
-            'HOST': 'aws-0-ap-southeast-1.pooler.supabase.com',
-            'PORT': '6543',
+            'HOST': 'aws-0-us-east-1.pooler.supabase.com',
+            'PORT': '5432',
             'OPTIONS': {
                 'sslmode': 'require',
             },
